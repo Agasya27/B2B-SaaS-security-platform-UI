@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* global font setup */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* prevent any horizontal scroll on mobile */
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* smooth theme transitions */
+* {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.1s ease;
+}
+
+/* scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #3a3a3a; }
+
+/* thinner scrollbar for the console panel */
+.console-scroll::-webkit-scrollbar { width: 4px; }
+.console-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+.dark .console-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+input:focus, select:focus { outline: none; }
+
+/* smooth momentum scrolling on iOS */
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* bump up touch targets on small screens */
+@media (max-width: 640px) {
+  button, a, [role="button"] {
+    min-height: 36px;
+  }
+}
+
+/* page transition animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-in { animation-fill-mode: both; }
+.fade-in    { animation-name: fadeIn; }
+.slide-in   { animation-name: slideIn; }
+
+.duration-300 { animation-duration: 300ms; }
+.duration-500 { animation-duration: 500ms; }
+
+.toast-animate {
+  animation: toastIn 0.3s ease-out;
+}
